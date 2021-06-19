@@ -31,3 +31,9 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### wildfly ##
+wildfly-24.0.0.Final/standalone/configuration/logging.properties
+wildfly-24.0.0.Final/standalone/deployments/*
+wildfly-24.0.0.Final/standalone/log/*         
+wildfly-24.0.0.Final/standalone/data/*
