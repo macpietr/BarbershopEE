@@ -41,3 +41,6 @@ wildfly-24.0.0.Final/standalone/deployments/README.txt
 wildfly-24.0.0.Final/standalone/deployments/EARmodule-1.0-SNAPSHOT.ear
 wildfly-24.0.0.Final/standalone/deployments/EARmodule-1.0-SNAPSHOT.ear.deployed
 wildfly-24.0.0.Final/standalone/log/server.log
+wildfly-24.0.0.Final/standalone/configuration/standalone_xml_history/
+wildfly-24.0.0.Final/standalone/data/
+wildfly-24.0.0.Final/standalone/data/content/
