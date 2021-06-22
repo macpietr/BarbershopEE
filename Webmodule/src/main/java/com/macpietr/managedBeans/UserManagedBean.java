@@ -2,32 +2,31 @@ package com.macpietr.managedBeans;
 
 import com.macpietr.datamodel.User;
 import com.macpietr.repositories.UserRepository;
-import com.macpietr.service.UserService;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 
-@Transactional
-@ApplicationScoped
+@Named
 public class UserManagedBean {
 
-    private User user;
+    private User user = new User();
 
     @Inject
-    UserService userService;
-
-    @PersistenceContext
-    EntityManager entityManager;
+    UserRepository userRepository;
 
     public User getUser(){
-        User user = new User();
         user.setFirstname("MAćK");
-        entityManager.persist(user);
-        return userService.findUserById(1L);
+        userRepository.saveUser(user);
+        return userRepository.findUserById(1L);
     }
 
+    public void setUser(User user) {
+        this.user = user;
+    }
 }
