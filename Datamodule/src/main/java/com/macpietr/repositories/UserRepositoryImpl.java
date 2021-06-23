@@ -5,6 +5,7 @@ import com.macpietr.datamodel.User;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 @Stateless
 public class UserRepositoryImpl implements UserRepository{
@@ -25,5 +26,10 @@ public class UserRepositoryImpl implements UserRepository{
             entityManager.merge(user);
         }
         return user;
+    }
+
+    @Override
+    public List<User> findAllUsers() {
+        return entityManager.createQuery("select u from User u").getResultList();
     }
 }

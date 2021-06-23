@@ -9,6 +9,7 @@
 </h1>
 <br/>
 <a href="hello-servlet">Hello Servlet</a>
+<a href="/hello-world">Hello Resource</a>
 <a href="user.xhtml">Show Username</a>
 </body>
 </html>

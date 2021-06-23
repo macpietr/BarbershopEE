@@ -9,7 +9,15 @@
     <h:outputLabel value="Hello, world"/>
 </f:view>
 <h:body>
-    <h1>USERNAME:</h1>
-    <h1>#{userManagedBean.user.firstname}</h1>
+    <h:dataTable value="#{userManagedBean.users}" var="user">
+        <h:column>
+            <f:facet name="header">ID</f:facet>
+            #{user.id}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Firstname</f:facet>
+            #{user.firstname}
+        </h:column>
+    </h:dataTable>
 </h:body>
 </html>
