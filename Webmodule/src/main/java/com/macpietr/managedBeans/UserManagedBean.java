@@ -1,38 +1,47 @@
 package com.macpietr.managedBeans;
 
 import com.macpietr.datamodel.User;
-import com.macpietr.repositories.UserRepository;
-import lombok.Getter;
-import lombok.Setter;
+import com.macpietr.service.UserService;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.faces.bean.SessionScoped;
+import javax.annotation.PostConstruct;
+import javax.enterprise.context.RequestScoped;
+import javax.faces.component.UIViewRoot;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-
 
 @Named
-@Getter @Setter
+@RequestScoped
 public class UserManagedBean {
 
-    private User user = new User();
-    private List<User> users = new ArrayList<>();
-
     @Inject
-    UserRepository userRepository;
+    private UserService userService;
+
+    private User user;
+    private List<User> users;
+
+    @PostConstruct
+    public void init(){
+        user = new User();
+    }
+
+    public String submitUser(){
+        userService.saveUser(user);
+        UIViewRoot view = FacesContext.getCurrentInstance().getViewRoot();
+        return view.getViewId() + "?faces-redirect=true";
+    }
 
     public List<User> getUsers(){
-        users = userRepository.findAllUsers();
+        users = userService.findUseres();
         return users;
     }
 
-    public void saveUserInDB(){
-        userRepository.saveUser(user);
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

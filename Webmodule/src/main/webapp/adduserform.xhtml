@@ -7,14 +7,19 @@
     <title>Add user form</title>
 </head>
 <body>
-  <h:form>
-      <tr>
-          First name:
-      </tr>
-      <tr>
-        <h:inputText label="First name" id="firstname" value="#{userManagedBean.user.firstname}"/>
-      </tr>
-      <h:commandButton value="Submit" action="#{userManagedBean.saveUserInDB}"/>
-  </h:form>
+<a href="index.jsp"></a>
+<h:form id="adduserform">
+    <tr>
+        <h:outputLabel for="firstname">Firstname:</h:outputLabel>
+        <h:inputText id="firstname" value="#{userManagedBean.user.firstname}"/>
+    </tr>
+    <tr>
+        <h:outputLabel for="lastname">lastname:</h:outputLabel>
+        <h:inputText id="lastname" value="#{userManagedBean.user.lastname}"/>
+    </tr>
+    <tr>
+        <h:commandButton type="submit" value="Submit" id="submit" action="#{userManagedBean.submitUser}"/>
+    </tr>
+</h:form>
 </body>
 </html>

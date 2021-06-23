@@ -32,4 +32,10 @@ public class UserRepositoryImpl implements UserRepository{
     public List<User> findAllUsers() {
         return entityManager.createQuery("select u from User u").getResultList();
     }
+
+    @Override
+    public List<User> saveUsers(List<User> users) {
+        users.forEach(x->saveUser(x));
+        return users;
+    }
 }
